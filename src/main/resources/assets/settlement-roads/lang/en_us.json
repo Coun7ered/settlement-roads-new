@@ -22,5 +22,10 @@
   "settlement-roads.midnightconfig.placeWaypoints": "Place Waypoints instead of Roads",
   "settlement-roads.midnightconfig.placeWaypoints.tooltip": "Disables road generation in favor of waypoint generation",
 
+  "settlement-roads.midnightconfig.nextVillageSignText": "Sign text to next village",
+  "settlement-roads.midnightconfig.nextVillageSignText.tooltip": "This text will appear on sign to next village. %d is distance, / is jump next line",
+  "settlement-roads.midnightconfig.helloSignText": "Greeting sign text",
+  "settlement-roads.midnightconfig.helloSignText.tooltip": "This text will appear on welcoming sign. Use / to jump next line",
+
   "settlement-roads.midnightconfig.title":"Countered's Settlement Roads"
 }

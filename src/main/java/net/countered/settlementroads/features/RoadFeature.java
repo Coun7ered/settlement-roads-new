@@ -170,7 +170,7 @@ public class RoadFeature extends Feature<RoadFeatureConfig> {
         BlockPos shiftedPos;
         if (segmentIndex == 65 || segmentIndex == middleBlockPositions.size() - 65) {
             shiftedPos = isEnd ? placePos.add(orthogonalVector.multiply(2)) : placePos.subtract(orthogonalVector.multiply(2));
-            roadDecorationPlacementPositions.add(new DistanceSignDecoration(shiftedPos, orthogonalVector, structureWorldAccess, isEnd, String.valueOf(middleBlockPositions.size())));
+            roadDecorationPlacementPositions.add(new DistanceSignDecoration(shiftedPos, orthogonalVector, structureWorldAccess, isEnd, middleBlockPositions.size()));
         }
         else if (segmentIndex % 59 == 0) {
             boolean leftRoadSide = random.nextBoolean();

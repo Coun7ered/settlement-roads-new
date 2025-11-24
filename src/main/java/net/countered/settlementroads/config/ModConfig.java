@@ -27,4 +27,10 @@ public class ModConfig extends MidnightConfig {
 
     @Entry(category = "roads", name = "Place waypoints instead of roads")
     public static boolean placeWaypoints = false;
+
+    @Entry(category = "roads", name = "Sign text to next village")
+    public static String nextVillageSignText = "----------/Next Village/%d m/----------";
+
+    @Entry(category = "roads", name = "Greeting sign text")
+    public static String helloSignText = "----------/Welcome/traveller/----------";
 }
