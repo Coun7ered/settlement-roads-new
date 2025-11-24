@@ -33,6 +33,7 @@ public class StructureLocator {
     );
 
     public static void locateConfiguredStructure(ServerWorld serverWorld, int locateCount, boolean locateAtPlayer) {
+        BlockPos spawnPos = BlockPos.ORIGIN;
         LOGGER.debug("Locating " + locateCount + " " + ModConfig.structureToLocate);
         try {
             for (int x = 0; x < locateCount; x++) {
@@ -42,7 +43,7 @@ public class StructureLocator {
                     }
                 }
                 else {
-                    executeLocateStructure(serverWorld.getSpawnPos(), serverWorld, new RegistryPredicateArgumentType<>(RegistryKeys.STRUCTURE).parse(new StringReader(ModConfig.structureToLocate)));
+                    executeLocateStructure(spawnPos, serverWorld, new RegistryPredicateArgumentType<>(RegistryKeys.STRUCTURE).parse(new StringReader(ModConfig.structureToLocate)));
                 }
             }
         } catch (CommandSyntaxException e) {
@@ -51,7 +52,7 @@ public class StructureLocator {
     }
 
     private static void executeLocateStructure(BlockPos locatePos, ServerWorld serverWorld, RegistryPredicateArgumentType.RegistryPredicate<Structure> predicate) throws CommandSyntaxException {
-        Registry<Structure> registry = serverWorld.getRegistryManager().get(RegistryKeys.STRUCTURE);
+        Registry<Structure> registry = serverWorld.getRegistryManager().getOrThrow(RegistryKeys.STRUCTURE);
         RegistryEntryList<Structure> registryEntryList = (RegistryEntryList<Structure>)getStructureListForPredicate(predicate, registry)
                 .orElseThrow(() -> STRUCTURE_INVALID_EXCEPTION.create(predicate.asString()));
         Pair<BlockPos, RegistryEntry<Structure>> pair = serverWorld.getChunkManager()
@@ -69,6 +70,6 @@ public class StructureLocator {
     private static Optional<? extends RegistryEntryList.ListBacked<Structure>> getStructureListForPredicate(
             RegistryPredicateArgumentType.RegistryPredicate<Structure> predicate, Registry<Structure> structureRegistry
     ) {
-        return predicate.getKey().map(key -> structureRegistry.getEntry(key).map(entry -> RegistryEntryList.of(entry)), structureRegistry::getEntryList);
+        return predicate.getKey().map(key -> structureRegistry.getOptional(key).map(entry -> RegistryEntryList.of(entry)), structureRegistry::getOptional);
     }
 }
