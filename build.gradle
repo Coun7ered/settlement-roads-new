@@ -43,7 +43,7 @@ unifiedPublishing {
 		displayName = "Settlement Roads v$mod_version"
 		changelog = file("$rootDir/CHANGELOG.md").text
 		releaseType = "release"
-		gameVersions = ["1.21.6", "1.21.7", "1.21.8", "1.21.9", "1.21.10"]
+		gameVersions = ["1.21.9", "1.21.10"]
 		gameLoaders = ["fabric"]
 
 		mainPublication(tasks.named("remapJar").get())

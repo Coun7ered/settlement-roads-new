@@ -14,16 +14,6 @@ public class SettlementRoads implements ModInitializer {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(SettlementRoads.MOD_ID);
 
-	// -5233360391469774945
-
-	// Fix:
-	// Clean snow from roads
-
-	// OPTIONAL
-	// Location lag reducing (async locator?)/ structure essentials / place instant roads?
-	// Bridges
-	// Tunnels
-
 	@Override
 	public void onInitialize() {
 		LOGGER.info("Initializing Settlement Roads...");
